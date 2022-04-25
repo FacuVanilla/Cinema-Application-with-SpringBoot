@@ -1,0 +1,48 @@
+.movie-list {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie {
+    width: 200px;
+    margin: 10px;
+    border: 1px solid #fcf3cf;
+    padding: 10px;
+    transition-duration: 0.2s;
+}
+
+.movie:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 5px 2px 2px #fcf3cf;
+}
+
+.movie .img-container {
+    width: 80%;
+    height: 145px;
+    margin: auto;
+}
+
+.movie .img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.movie .info {
+    margin: 10px 20px;
+    font-size: small;
+}
+
+.movie .buttons {
+    margin-top: 10px;
+}
+
+.movie-filters {
+    display: flex;
+}
+
+.movie-filters li {
+    margin: 0 15px;
+}

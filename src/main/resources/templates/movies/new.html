@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container">
+    <h1 th:text="${title}"></h1>
+    <form th:action="@{/movies/new}"
+          th:object="${movie}"
+          method="post"
+          enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}">
+            <label class="col-md2" for="title">Title</label>
+            <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+                   placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="author">Producer</label>
+            <input th:field="*{producer}" type="text" class="col-md6 form-control form-control-sm" id="author"
+                   placeholder="Enter producer">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="category">Category</label>
+            <select th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category">
+                <option th:each="category: ${categories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}"
+                >
+
+                </option>
+            </select>
+        </div>
+
+        <label class="col-md2" for="image">Image</label>
+        <input th:name="image" type="file" class="col-md6 form-control-file form-control-sm" id="image"
+               accept="image/png, image/jpeg"
+               placeholder="Choose...">
+
+        <div class="card-footer ">
+            <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+        </div>
+    </form>
+</section>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

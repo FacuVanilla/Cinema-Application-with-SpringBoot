@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container">
+    <h1 th:text="${title}"></h1>
+    <ul class="movie-filters">
+        <li><a href="/movies/">All</a></li>
+        <li th:each="category: ${categories}">
+            <a th:href="${'/movies?categoryId='+category.id}"
+               th:text="${category.name}">
+            </a>
+        </li>
+    </ul>
+    <div class="movie-list">
+        <p th:if="${movies.isEmpty()}"
+           th:text="'No movies yet! Use the \'New\' button to add some movies.'"></p>
+        <div class="movie" th:each="movie: ${movies}">
+            <div class="img-container"><img th:src="${movie.imagePath}"></div>
+            <div class="info">
+                <div th:text="${movie.title}">Mark</div>
+                <div th:text="${movie.producer}">Mark</div>
+               <div th:text="${movie.category}">Mark</div>
+            </div>
+            <div class="buttons" sec:authorize="isAuthenticated()">
+                <a class="btn btn-success btn-sm" th:href="'/movies/edit/'+${movie.id}">Edit</a>
+                <a class="btn btn-danger btn-sm" th:href="'/movies/delete/'+${movie.id}">Delete</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

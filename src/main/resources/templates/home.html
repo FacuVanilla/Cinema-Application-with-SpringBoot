@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container" sec:authorize="isAuthenticated()">
+    <h2>Welcome to FilmHouse Cinema</h2>
+    <p>Go to the <a href="/movies/">Movies</a> section or <a href="/movies/new">create a new movie</a></p>
+</section>
+<section class="container" sec:authorize="isAnonymous()">
+    <h2>Welcome to FilmHouse Cinema. </h2>
+    <p>Go to the <a href="/movies/">Movies</a> section or <a href="/login">Log In</a></p>
+</section>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
